@@ -1,0 +1,20 @@
+class Solution(object):
+    def firstMissingPositive(self, nums):
+
+        nums.sort()
+        dictNums = {}
+
+        for i in nums[:]:
+            if i <= 0:
+                nums.remove(i)
+            else:
+                dictNums[i] = i
+
+        if not nums or nums[0] != 1:
+            return 1
+        
+        for i in nums:
+            if (i + 1) not in dictNums:
+                return i + 1
+        
+        
