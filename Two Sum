@@ -1,0 +1,10 @@
+class Solution(object):
+    def twoSum(self, nums, target):
+        numsDict = dict(zip(nums, nums))
+        index = 0 
+        for i in nums:
+            rest = target - i
+            if rest in numsDict and index != nums.index(rest):
+                return [index, nums.index(rest)]
+            index += 1
+        
