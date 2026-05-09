@@ -1,0 +1,34 @@
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def addTwoNumbers(self, l1, l2):
+        l1norm = []
+        actual = l1
+        while actual is not None:
+            l1norm.append(actual.val)
+            actual = actual.next
+
+        l2norm = []
+        actual = l2
+        while actual is not None:
+            l2norm.append(actual.val)
+            actual = actual.next
+
+        invL1 = int("".join(map(str, l1norm[::-1])))
+        invL2 = int("".join(map(str, l2norm[::-1])))
+
+        numNorm = [int(num) for num in str(invL1 + invL2)][::-1]
+
+        cabeza = ListNode(numNorm[0])
+        actual = cabeza
+        
+        for numero in numNorm[1:]:
+            nuevo_nodo = ListNode(numero)
+            actual.next = nuevo_nodo
+            actual = nuevo_nodo 
+        
+
+        return cabeza
