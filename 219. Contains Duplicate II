@@ -1,0 +1,14 @@
+class Solution(object):
+    def containsNearbyDuplicate(self, nums, k):
+        listPos = set()
+        for i, num in enumerate(nums):
+
+            if num in listPos:
+                return True
+
+            listPos.add(num) 
+
+            if len(listPos) > k:
+                listPos.remove(nums[i - k])
+
+        return False
