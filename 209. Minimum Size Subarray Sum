@@ -1,0 +1,20 @@
+class Solution(object):
+    def minSubArrayLen(self, target, nums):
+        targetSums = []
+        suma = 0
+        start = 0
+        steps = 0
+        for end in range(0, len(nums)):
+            suma += nums[end]
+            steps += 1
+            while suma >= target and start <=end:
+                targetSums.append(steps)
+                suma -= nums[start]
+                start += 1
+                steps -= 1
+                
+                
+        if len(targetSums) == 0:
+            return 0
+         
+        return min(targetSums)
