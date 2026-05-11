@@ -1,0 +1,18 @@
+class Solution(object):
+    def lengthOfLongestSubstring(self, s):
+        lettersUsed = []
+        longestSub = 0
+        longestSubArray = [0]
+        for i in s:
+            if i not in lettersUsed:
+                lettersUsed.append(i)
+
+            else:
+                while i in lettersUsed:
+                    lettersUsed.remove(lettersUsed[0])
+                lettersUsed.append(i)
+                
+            longestSubArray.append(len(lettersUsed))
+
+        return max(longestSubArray)
+
