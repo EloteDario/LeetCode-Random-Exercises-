@@ -1,0 +1,18 @@
+class Solution(object):
+    def findRepeatedDnaSequences(self, s):
+        substrs = set()
+        substrsreps = set()
+        actualStr = ""
+        start = 0
+        for end in range(0, len(s)):
+            actualStr += s[end]
+
+            if len(actualStr) >= 10:
+                if actualStr in substrs and actualStr not in substrsreps:
+                    substrsreps.add(actualStr)
+
+                substrs.add(actualStr)
+                actualStr = actualStr[1:]
+                start += 1
+
+        return list(substrsreps)
