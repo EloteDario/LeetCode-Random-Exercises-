@@ -1,0 +1,14 @@
+class Solution(object):
+    def findMaxAverage(self, nums, k):
+        avg = float(sum(nums[:k]))
+        maxAvg = avg
+        start = 0
+        for end in range(k, len(nums)):
+            avg += nums[end]
+            avg -= nums[start]
+
+            if avg > maxAvg:
+                maxAvg = avg
+            start += 1
+        
+        return maxAvg/k
